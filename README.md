@@ -80,15 +80,6 @@ robot-path-planning/
 │       └── config.json         # Environment configuration
 └── README.md
 ```
-
----
-
-## 🛠️ Tech Stack
-
-* **Python 3**
-* **Libraries:** NumPy, Pandas, Matplotlib, openpyxl, heapq
-* **Platform:** VS Code / local Python environment
-
 ---
 
 ## 🔧 Code Notes
@@ -124,7 +115,7 @@ The A* implementation was written from scratch as the primary algorithm for this
    python DFS.py
 
    cd Code/UCS
-   python UCS_Graph.py           # or UCS_Tree.py
+   python UCS_Graph.py     # or UCS_Tree.py
    ```
 
 > **Note:** A* heuristic can be switched between `"manhattan"` and `"euclidean"` by changing the `heuristic_type` argument in the `main()` call at the bottom of each A* file.
