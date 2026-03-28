@@ -6,18 +6,20 @@ Implementing and comparing classic AI search algorithms (BFS, DFS, UCS, and A*) 
 
 ## 📌 Project Overview
 
-A mobile robot must navigate from a start position **A** to a goal position **B** on a 12×12 grid containing 2 impassable obstacle regions. The project evaluates which search algorithm finds the best path most efficiently, measuring execution time, memory usage, path cost, and path length across 8 algorithm variants (4 algorithms × 2 search paradigms).
+A mobile robot must navigate from a start position **A** to a goal position **B** on a 13×13 grid containing 4 impassable obstacle cells. The project evaluates which search algorithm finds the best path most efficiently, measuring execution time, memory usage, and path cost across 7 algorithm variants (4 algorithms, with DFS implemented as a single graph search variant).
 
 ---
 
 ## 🗺️ Environment
 
 | Property | Details |
-|---|---|
-| Grid size | 12 × 12 |
-| Obstacles | 2 impassable obstacle regions |
+| --- | --- |
+| Grid size | 13 × 13 |
+| Obstacles | 4 impassable obstacle cells |
+| Start position | (2, 3) |
+| Goal position | (9, 9) |
 | Robot shape | Circular base |
-| Motion model | Up, Down, Left, Right (cost = 1 per move) |
+| Motion model | BFS, DFS, A*: Up, Down, Left, Right (cost = 1); UCS: 8 directions including diagonals (diagonal cost = 1.414) |
 | Representation | Binary matrix (0 = free, 1 = obstacle) |
 
 The shared map and configuration used by all algorithms is in `Code/MapConfig/`.
@@ -26,16 +28,34 @@ The shared map and configuration used by all algorithms is in `Code/MapConfig/`.
 
 ## 🧠 Algorithms Implemented
 
-Each of the following is implemented under both **tree search** (Set 1) and **graph search** (Set 2) paradigms:
+| Algorithm | Variant | Description |
+| --- | --- | --- |
+| **BFS** | Tree & Graph | Breadth-First Search — explores level by level; guarantees shortest path in uniform cost environments |
+| **DFS** | Graph only | Depth-First Search — explores deep branches first; memory-efficient. Tree variant omitted as it risks infinite loops in grid environments with cycles |
+| **UCS** | Tree & Graph | Uniform Cost Search — expands lowest-cost node first; optimal. Supports diagonal movement |
+| **A\*** | Tree & Graph | A-Star — uses Euclidean or Manhattan heuristic to guide search; optimal and efficient |
 
-| Algorithm | Description |
-|---|---|
-| **BFS** | Breadth-First Search — explores level by level; optimal for uniform costs |
-| **DFS** | Depth-First Search — explores deep branches first; memory-efficient but not optimal |
-| **UCS** | Uniform Cost Search — expands lowest-cost node first; optimal |
-| **A\*** | A-Star — uses heuristic (Euclidean/Manhattan distance) to guide search; optimal and efficient |
+> **Tree search** does not track visited nodes, while **graph search** maintains a closed set to avoid revisiting nodes — trading memory for speed.
 
-> **Tree search** re-explores nodes (no visited tracking), while **graph search** maintains a closed set to avoid revisiting nodes — trading memory for speed.
+---
+
+## 📊 Benchmark Results
+
+All results measured on the shared 13×13 grid from start (2,3) to goal (9,9).
+
+| Algorithm | Heuristic | Time (s) | Memory (MB) | Path Cost |
+| --- | --- | --- | --- | --- |
+| T-A* | Manhattan | 0.80 | 10.6 | 13 |
+| T-A* | Euclidean | 0.81 | 11.0 | 13 |
+| G-A* | Manhattan | 0.80 | 10.6 | 13 |
+| G-A* | Euclidean | 0.83 | 11.0 | 13 |
+| T-BFS | — | 0.89 | 12.3 | 13 |
+| G-BFS | — | 0.88 | 12.3 | 13 |
+| DFS | — | 0.66 | 9.3 | 13 |
+| T-UCS | — | 0.82 | 11.0 | 9.484 |
+| G-UCS | — | 0.84 | 11.5 | 9.484 |
+
+> UCS achieves a lower path cost (9.484) than other algorithms by using diagonal movement, which allows shorter routes at a cost of 1.414 per diagonal step.
 
 ---
 
@@ -51,50 +71,51 @@ robot-path-planning/
 │   │   ├── BFS_Graph.py        # BFS graph search
 │   │   └── BFS_Tree.py         # BFS tree search
 │   ├── DFS/
-│   │   └── DFS.py              # DFS implementation
+│   │   └── DFS.py              # DFS graph search (see note in file)
 │   ├── UCS/
 │   │   ├── UCS.py              # UCS graph search
 │   │   └── UCS_Tree.py         # UCS tree search
 │   └── MapConfig/
-│       ├── map.xlsx            # Shared 12×12 grid map
+│       ├── map.xlsx            # Shared 13×13 grid map
 │       └── config.json         # Environment configuration
 └── README.md
 ```
 
 ---
 
-## 📊 Performance Metrics Tracked
+## 🛠️ Tech Stack
 
-Each algorithm records:
-- **Path found** — sequence of coordinates from start to goal
-- **Path cost** — total cost of the path
-- **Execution time** — in seconds
-- **Memory/storage** — nodes stored during search
+* **Python 3**
+* **Libraries:** NumPy, Pandas, Matplotlib, openpyxl, heapq
+* **Platform:** VS Code / local Python environment
 
 ---
 
-## 🛠️ Tech Stack
+## 🔧 Code Notes
 
-- **Python 3**
-- **Libraries:** NumPy, Pandas, Matplotlib, openpyxl
-- **Platform:** VS Code / local Python environment
+The A* implementation was written from scratch as the primary algorithm for this project. The remaining algorithm files (BFS, DFS, UCS) were reviewed post-submission, with some files rewritten and others replaced to improve correctness and performance.
 
 ---
 
 ## 🚀 How to Run
 
 1. Clone the repository:
-   ```bash
+
+   ```
    git clone https://github.com/ananthananthananth/robot-path-planning.git
    ```
+
 2. Install dependencies:
-   ```bash
+
+   ```
    pip install numpy matplotlib pandas openpyxl
    ```
+
 3. Navigate to any algorithm folder and run the relevant file:
-   ```bash
+
+   ```
    cd Code/Astar
-   python Astar_graph.py   # or Astar_tree.py
+   python AStar_Graph.py   # or AStar_Tree.py
 
    cd Code/BFS
    python BFS_Graph.py     # or BFS_Tree.py
@@ -103,7 +124,7 @@ Each algorithm records:
    python DFS.py
 
    cd Code/UCS
-   python UCS.py           # or UCS_Tree.py
+   python UCS_Graph.py           # or UCS_Tree.py
    ```
 
----
+> **Note:** A* heuristic can be switched between `"manhattan"` and `"euclidean"` by changing the `heuristic_type` argument in the `main()` call at the bottom of each A* file.
