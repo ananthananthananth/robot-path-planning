@@ -9,7 +9,6 @@ import math
 import heapq
 
 def tree_search(grid, start, goal, radius, reso, heuristic_type="manhattan"):
-    pause = 0.01
     rows, cols = grid.shape
 
     # Heuristic function
@@ -43,11 +42,9 @@ def tree_search(grid, start, goal, radius, reso, heuristic_type="manhattan"):
         if current != start and current in came_from:
             prev_pos = came_from[current]
             plt.plot([prev_pos[1] + 0.5, current[1] + 0.5], [prev_pos[0] + 0.5, current[0] + 0.5], color="red")
-            plt.pause(pause)
 
         if current != start:
             plt.scatter((current[1] + 0.5), (current[0] + 0.5), color="blue", s=600, marker='s', alpha=0.6)
-            plt.pause(pause)
 
         if current == goal:
             break
@@ -61,7 +58,6 @@ def tree_search(grid, start, goal, radius, reso, heuristic_type="manhattan"):
                     continue
                 elif neighbors in danger_cells:  # Dangerous cells
                     plt.scatter((neighbors[1] + 0.5), (neighbors[0] + 0.5), color='black', s=600, marker='s', alpha=0.6)
-                    plt.pause(pause)
                     continue
                 else:
                     tentative_g_cost = g_cost[current] + cost_of_action
