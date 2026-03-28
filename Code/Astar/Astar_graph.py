@@ -9,7 +9,6 @@ import math
 import heapq
 
 def a_star(grid, start, goal, radius, reso, heuristic_type="manhattan"):
-    pause = 0.01
     rows, cols = grid.shape
 
     # Heuristic
