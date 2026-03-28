@@ -65,15 +65,15 @@ All results measured on the shared 13×13 grid from start (2,3) to goal (9,9).
 robot-path-planning/
 ├── Code/
 │   ├── Astar/
-│   │   ├── Astar_graph.py      # A* graph search
-│   │   └── Astar_tree.py       # A* tree search
+│   │   ├── AStar_Graph.py      # A* graph search
+│   │   └── AStar_Tree.py       # A* tree search
 │   ├── BFS/
 │   │   ├── BFS_Graph.py        # BFS graph search
 │   │   └── BFS_Tree.py         # BFS tree search
 │   ├── DFS/
-│   │   └── DFS.py              # DFS graph search (see note in file)
+│   │   └── DFS.py              # DFS graph search 
 │   ├── UCS/
-│   │   ├── UCS.py              # UCS graph search
+│   │   ├── UCS_Graph.py        # UCS graph search
 │   │   └── UCS_Tree.py         # UCS tree search
 │   └── MapConfig/
 │       ├── map.xlsx            # Shared 13×13 grid map
