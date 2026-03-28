@@ -1,1 +1,9 @@
-
+{
+    "x_of_start": 2,  
+    "y_of_start": 3,  
+    "x_of_goal": 9,  
+    "y_of_goal": 9, 
+    "grid_size": 1,  
+    "robot_radius": 0.2,
+    "fig": 8
+}
