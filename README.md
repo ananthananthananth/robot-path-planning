@@ -80,6 +80,15 @@ robot-path-planning/
 │       └── config.json         # Environment configuration
 └── README.md
 ```
+
+---
+
+## 🛠️ Tech Stack
+
+* **Python 3**
+* **Libraries:** NumPy, Pandas, Matplotlib, openpyxl, heapq
+* **Platform:** VS Code / local Python environment
+
 ---
 
 ## 🔧 Code Notes
