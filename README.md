@@ -1,16 +1,16 @@
-# 🤖 Robot Path Planning — Search Algorithm Comparison
+#  Robot Path Planning — Search Algorithm Comparison
 
 Implementing and comparing classic AI search algorithms (BFS, DFS, UCS, and A*) for mobile robot navigation on a 2D grid environment. Both **tree search** and **graph search** paradigms are implemented and benchmarked against each other.
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 A mobile robot must navigate from a start position **A** to a goal position **B** on a 13×13 grid containing 4 impassable obstacle cells. The project evaluates which search algorithm finds the best path most efficiently, measuring execution time, memory usage, and path cost across 7 algorithm variants (4 algorithms, with DFS implemented as a single graph search variant).
 
 ---
 
-## 🗺️ Environment
+##  Environment
 
 | Property | Details |
 | --- | --- |
@@ -26,7 +26,7 @@ The shared map and configuration used by all algorithms is in `Code/MapConfig/`.
 
 ---
 
-## 🧠 Algorithms Implemented
+##  Algorithms Implemented
 
 | Algorithm | Variant | Description |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ The shared map and configuration used by all algorithms is in `Code/MapConfig/`.
 
 ---
 
-## 📊 Benchmark Results
+##  Benchmark Results
 
 All results measured on the shared 13×13 grid from start (2,3) to goal (9,9).
 
@@ -59,7 +59,7 @@ All results measured on the shared 13×13 grid from start (2,3) to goal (9,9).
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 robot-path-planning/
@@ -83,21 +83,20 @@ robot-path-planning/
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * **Python 3**
 * **Libraries:** NumPy, Pandas, Matplotlib, openpyxl, heapq
-* **Platform:** VS Code / local Python environment
 
 ---
 
-## 🔧 Code Notes
+##  Code Notes
 
 The A* implementation was written from scratch as the primary algorithm for this project. The remaining algorithm files (BFS, DFS, UCS) were reviewed post-submission, with some files rewritten and others replaced to improve correctness and performance.
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 1. Clone the repository:
 
