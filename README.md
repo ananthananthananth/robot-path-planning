@@ -30,10 +30,10 @@ The shared map and configuration used by all algorithms is in `Code/MapConfig/`.
 
 | Algorithm | Variant | Description |
 | --- | --- | --- |
-| **BFS** | Tree & Graph | Breadth-First Search — explores level by level; guarantees shortest path in uniform cost environments |
-| **DFS** | Graph only | Depth-First Search — explores deep branches first; memory-efficient. Tree variant omitted as it risks infinite loops in grid environments with cycles |
-| **UCS** | Tree & Graph | Uniform Cost Search — expands lowest-cost node first; optimal. Supports diagonal movement |
-| **A\*** | Tree & Graph | A-Star — uses Euclidean or Manhattan heuristic to guide search; optimal and efficient |
+| **BFS** | Tree & Graph | Breadth-First Search : explores level by level; guarantees shortest path in uniform cost environments |
+| **DFS** | Graph only | Depth-First Search : explores deep branches first; memory-efficient. Tree variant omitted as it risks infinite loops in grid environments with cycles 
+| **UCS** | Tree & Graph | Uniform Cost Search : expands lowest-cost node first; optimal. Supports diagonal movement |
+| **A\*** | Tree & Graph | A-Star : uses Euclidean or Manhattan heuristic to guide search; optimal and efficient |
 
 > **Tree search** does not track visited nodes, while **graph search** maintains a closed set to avoid revisiting nodes — trading memory for speed.
 
