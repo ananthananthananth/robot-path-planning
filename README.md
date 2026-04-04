@@ -78,6 +78,7 @@ robot-path-planning/
 │   └── MapConfig/
 │       ├── map.xlsx            # Shared 13×13 grid map
 │       └── config.json         # Environment configuration
+├── LICENSE
 └── README.md
 ```
 
